@@ -5,4 +5,4 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:ignore="MergeRootFrame"
-    tools:context="com.smokescreem.shash.popularmovies.MovieDetailActivity"/>
+    tools:context="com.smokescreem.shash.popularmovies.ui.activity.MovieDetailActivity"/>

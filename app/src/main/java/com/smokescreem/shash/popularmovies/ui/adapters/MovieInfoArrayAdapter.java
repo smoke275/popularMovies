@@ -1,4 +1,4 @@
-package com.smokescreem.shash.popularmovies.adapters;
+package com.smokescreem.shash.popularmovies.ui.adapters;
 
 import android.content.Context;
 import android.net.Uri;
@@ -9,9 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 
-import com.smokescreem.shash.popularmovies.Constants;
+import com.smokescreem.shash.popularmovies.utils.Constants;
 import com.smokescreem.shash.popularmovies.R;
-import com.smokescreem.shash.popularmovies.models.Movie;
+import com.smokescreem.shash.popularmovies.data.models.Movie;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

@@ -1,6 +1,6 @@
-package com.smokescreem.shash.popularmovies.api;
+package com.smokescreem.shash.popularmovies.data.api;
 
-import com.smokescreem.shash.popularmovies.Constants;
+import com.smokescreem.shash.popularmovies.utils.Constants;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

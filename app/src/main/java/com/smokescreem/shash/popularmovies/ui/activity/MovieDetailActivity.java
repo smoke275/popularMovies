@@ -1,7 +1,10 @@
-package com.smokescreem.shash.popularmovies;
+package com.smokescreem.shash.popularmovies.ui.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
+import com.smokescreem.shash.popularmovies.R;
+import com.smokescreem.shash.popularmovies.ui.fragment.MovieDetailFragment;
 
 public class MovieDetailActivity extends AppCompatActivity {
 

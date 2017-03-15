@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,21 +18,25 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SettingsActivity"
+            android:name=".ui.activity.SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".ui.activity.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.smokescreem.shash.popularmovies.MainActivity" />
+                android:value="com.smokescreem.shash.popularmovies.ui.activity.MainActivity" />
         </activity>
         <activity
-            android:name=".MovieDetailActivity"
+            android:name=".ui.activity.MovieDetailActivity"
             android:label="@string/title_activity_movie_detail"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".ui.activity.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.smokescreem.shash.popularmovies.MainActivity" />
+                android:value="com.smokescreem.shash.popularmovies.ui.activity.MainActivity" />
         </activity>
+        <provider
+            android:name=".provider.MovieProvider"
+            android:authorities="com.smokescreem.shash.popularmovies.MovieProvider"
+            android:exported="false" />
     </application>
 
 </manifest>
