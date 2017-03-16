@@ -4,7 +4,9 @@ package com.smokescreem.shash.popularmovies.ui.fragment;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.preference.PreferenceManager;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -35,12 +37,17 @@ import retrofit2.Response;
 
 public class DashboardFragment extends Fragment {
     private final String LOG_TAG=DashboardFragment.class.getSimpleName();
+
+    private static final String BUNDLE_RECYCLER_LAYOUT = "DashboardFragment.recycler.layout";
     private List mMovieList;
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.Adapter adapter;
     private static final int LOADER_SEARCH_RESULTS = 1;
+
+    Parcelable mLayoutManagerSavedState = null;
+
     public DashboardFragment() {
     }
 
@@ -48,6 +55,24 @@ public class DashboardFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelable(BUNDLE_RECYCLER_LAYOUT, recyclerView.getLayoutManager().onSaveInstanceState());
+    }
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+
+        if(savedInstanceState != null)
+        {
+            mLayoutManagerSavedState = savedInstanceState.getParcelable(BUNDLE_RECYCLER_LAYOUT);
+
+        }
+
     }
 
     @Override
@@ -87,6 +112,9 @@ public class DashboardFragment extends Fragment {
                     List<Movie> movies = response.body().movies;
                     mMovieList = movies;
                     ((RecyclerAdapter)adapter).updateData(movies);
+                    if (mLayoutManagerSavedState != null) {
+                        recyclerView.getLayoutManager().onRestoreInstanceState(mLayoutManagerSavedState);
+                    }
                 }
 
                 @Override
@@ -120,6 +148,10 @@ public class DashboardFragment extends Fragment {
                     cursor.moveToNext();
                 }
                 ((RecyclerAdapter)adapter).updateData(mFavoriteMovieList);
+
+                if (mLayoutManagerSavedState != null) {
+                    recyclerView.getLayoutManager().onRestoreInstanceState(mLayoutManagerSavedState);
+                }
             } finally {
                 if (cursor != null)
                     cursor.close();
